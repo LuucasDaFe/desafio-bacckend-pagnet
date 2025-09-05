@@ -8,6 +8,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableBatchProcessing
 @EnableTransactionManagement
 public class BatchConfig {
-    // Esta classe está vazia, pois estamos apenas usando as anotações
-    // para configurar o Spring Batch
+    // Configuração mínima do Spring Batch
 }
