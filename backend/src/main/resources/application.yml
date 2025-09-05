@@ -1,15 +1,9 @@
 spring:
-  batch:
-    jdbc:
-      initialize-schema: never
-    job:
-      enabled: false
-  sql:
-    init:
-      mode: never
-
-# Configurações adicionais para o HikariCP
   datasource:
+    url: jdbc:postgresql://ep-wispy-moon-addq71l3-pooler.us-east-1.aws.neon.tech:5432/neondb
+    username: neondb_owner
+    password: npg_AMdG7RYyLVg3
+    driver-class-name: org.postgresql.Driver
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 5
@@ -26,6 +20,28 @@ spring:
         prepareThreshold: 0
         preparedStatementCacheQueries: 0
         preparedStatementCacheSizeMiB: 0
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+  batch:
+    jdbc:
+      initialize-schema: never
+    job:
+      enabled: false
+
+  sql:
+    init:
+      mode: never
 
 # Configurações de log
 logging:
