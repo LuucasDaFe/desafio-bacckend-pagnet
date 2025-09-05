@@ -1,0 +1,40 @@
+spring:
+  batch:
+    jdbc:
+      initialize-schema: never
+    job:
+      enabled: false
+  sql:
+    init:
+      mode: never
+
+# Configurações adicionais para o HikariCP
+  datasource:
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 5
+      minimum-idle: 1
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      auto-commit: true
+      connection-test-query: SELECT 1
+      leak-detection-threshold: 2000
+      data-source-properties:
+        ssl: true
+        sslmode: require
+        sslfactory: org.postgresql.ssl.NonValidatingFactory
+        prepareThreshold: 0
+        preparedStatementCacheQueries: 0
+        preparedStatementCacheSizeMiB: 0
+
+# Configurações de log
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BASIC_BIND: TRACE
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.engine.jdbc.spi: TRACE
+    com.zaxxer.hikari: DEBUG
+    org.postgresql: TRACE
